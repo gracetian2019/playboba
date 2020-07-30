@@ -11,6 +11,7 @@
 		<% @boba_teas.each do |boba_tea| %>
 
 			<div class="col-md-4">
+                <p class="boba-tea-desc"><%= boba_tea.name %></p>
 				<a href="/boba_teas/<%= boba_tea.id %>">
 					<%= image_tag boba_tea.boba_tea_img.url(:boba_tea_index), class: "boba-tea" %>
 				</a>
