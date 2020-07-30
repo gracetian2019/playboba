@@ -1,0 +1,7 @@
+<%= simple_form_for @boba_tea, :html => { :multipart => true } do |f| %>
+	<%= select_tag(:boba_shop_id, options_for_select(@boba_shops), :prompt => "Select Boba Shop") %>
+    <%= f.file_field :boba_tea_img %>
+	<%= f.input :name, label: "Boba Tea Name" %>
+	<%= f.input :description, label:"Description"%>
+	<%= f.button :submit, :class => "btn-custom2" %>
+<% end %>

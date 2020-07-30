@@ -1,0 +1,24 @@
+<h1 class="current-boba-shop"><%= params[:boba_shop] %></h1>
+
+<% if @boba_teas.count == 0 %>
+
+  <h1>There is no any reviewed boba tea in this shop</h1>
+
+<%else%>
+
+  <div class="row">
+
+		<% @boba_teas.each do |boba_tea| %>
+
+			<div class="col-md-4">
+				<a href="/boba_teas/<%= boba_tea.id %>">
+					<%= image_tag boba_tea.boba_tea_img.url(:boba_tea_index), class: "boba-tea" %>
+				</a>
+			</div>	
+
+		<% end %>
+
+	</div>
+          
+<% end %>
+<%= link_to "Add Boba Tea", new_boba_tea_path %>

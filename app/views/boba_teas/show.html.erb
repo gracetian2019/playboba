@@ -1,0 +1,68 @@
+<div class="row">
+
+	<div class="col-md-4">
+
+      <%= image_tag @boba_tea.boba_tea_img.url(:boba_tea_show), class: "boba-tea-show"%>
+
+	</div>
+
+	<div class="col-md-4">
+
+		<div class="boba-tea-info">
+             <h2 class="boba-tea-title"><%= @boba_tea.name %></h2>
+             <p class="boba-shop-name"><span>Boba shop:</span> <%= @boba_tea.boba_shop.name %></p>
+             <h3 class="avg-rating">Average Rating</h3>
+			 <div class="average-review-rating" data-score=<%= @average_review %>></div>
+             <span class="number-of-reviews">Total <%= @boba_tea.reviews.count %> reviews</span>
+             <p class="boba-tea-desc"><%= @boba_tea.description %></p>
+             
+        </div>
+	</div>
+
+    <div class="row">
+
+	<div class="col-md-7">
+
+       <div class="reviews">
+
+        <h1>Reviews</h1>
+        <%= render @boba_tea.reviews %>
+
+		  <div>
+			  <%= link_to "Add Review", new_boba_tea_review_path(@boba_tea), class: "btn-custom" %>
+		  </div>
+
+		</div>	
+
+	</div>
+
+</div>
+<div class="links btn-group">
+    <%= link_to "Back", root_path, class:"btn btn-custom" %>
+
+    <% if user_signed_in? %>
+      <% if @boba_tea.user_id == current_user.id %>
+        <%= link_to "Edit", edit_boba_tea_path(@boba_tea), class:"btn btn-custom" %>
+        <%= link_to "Delete", boba_tea_path(@boba_tea), method: :delete, data: {confirm:"Are you sure?"}, class:"btn btn-custom" %>
+      <%end%>
+    <%end%>
+</div>
+<script>
+	$('.review-rating').raty({
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+		},
+		path: '/assets/'
+	});
+</script>
+
+<script>
+	$('.average-review-rating').raty({
+		readOnly: true,
+		path: '/assets/',
+		score: function() {
+			return $(this).attr('data-score')
+		}
+	});
+</script>

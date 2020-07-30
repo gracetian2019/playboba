@@ -1,0 +1,14 @@
+<div class="col-md-6 col-md-offset-3">
+  <div class="edit-boba-tea-form">   
+
+     <h1>Edit Boba Tea</h1>
+    <%= simple_form_for @boba_tea, :html => { :multipart => true } do |f| %>
+	  <%= f.select :boba_shop_id, @boba_shops %>
+      <%= f.file_field :boba_tea_img %>
+	  <%= f.input :name, label: "Boba Tea Name" %>
+	  <%= f.input :description, label:"Description"%>
+	  <%= f.button :submit, :class => "btn-custom2" %>
+    <% end %>
+    
+  </div>
+</div>
