@@ -52,6 +52,14 @@
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
 
+	<% if !user_signed_in? %>
+        <div class="jumbotron">
+          <h1 class="display-4 boba">Rate Your Favorite Boba Tea</h1>
+          <p class="lead boba"><span class="boba-text">If you love Boba tea as much as us ᕙ(^▿^-ᕙ)</span>(ɔ◔‿◔)ɔ ♥Share your opinion with Boba Lovers!</p>
+          <hr class="my-4">
+        </div>
+    <% end %>
+
       <div class="container"> 
     <%= yield %>
     </div>
